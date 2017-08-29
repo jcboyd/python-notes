@@ -1,5 +1,4 @@
 
-
 def args_demo():
 
     """Function arguments (written args by convention) and keyword arguments 
@@ -7,9 +6,9 @@ def args_demo():
     operator."""
     def func(*args, **kwargs):     
         for arg in args:
-            print arg
+            print(arg)
         for kwarg in kwargs:
-            print kwargs[kwarg]
+            print(kwargs[kwarg])
 
     func(1, 2, 3, a=4, b=5, c=6)    # prints 1\n2\n3\n4\n5\n6
 
@@ -32,7 +31,7 @@ def iterator_demo():
             yield i + 1
 
     for i in natural_range(3):  # 1, 2, 3
-        print i
+        print(i)
 
     """To implement an iterator, we must implement the __iter__() and next() 
     methods in a class. Thus, we may use a for-in loop on a custom type."""
@@ -56,7 +55,7 @@ def iterator_demo():
     iterable = iterator([1, 2, 3])
 
     for val in iterable:    # 1, 2, 3
-        print val
+        print(val)
 
 def closure_demo():
 
@@ -71,10 +70,10 @@ def closure_demo():
         return enclosed
 
     closure1 = encloser(1)  # bind function object to identifier closure1
-    print closure1(1)       # prints 2
+    print(closure1(1))       # prints 2
 
     closure2 = encloser(2)  # bind function object to identifier closure2
-    print closure2(1)       # prints 3
+    print(closure2(1))       # prints 3
 
     """The enclosed function will have access to the ``free variables'' defined 
     in the enclosing scope. In so doing, the same function can be initialised 
@@ -92,14 +91,14 @@ def closure_demo():
         return get_text_with_tags
 
     get_text = decorator(get_text)  # create decorated function
-    print get_text('Joe')           # prints '<h1>Hello, Joe!</h1>'
+    print(get_text('Joe'))           # prints '<h1>Hello, Joe!</h1>'
 
     """Python provides syntactic sugar to automate the above"""
     @decorator
     def get_text(name):
         return 'Hello, %s!' % name
 
-    print get_text('Joe')           # prints '<h1>Hello, Joe!</h1>'
+    print(get_text('Joe'))           # prints '<h1>Hello, Joe!</h1>'
 
     """Decoraters may be nested repeatedly:"""
     @decorator
@@ -107,7 +106,7 @@ def closure_demo():
     def get_text(name):
         return 'Hello, %s!' % name
 
-    print get_text('Joe')           # prints '<h1>Hello, Joe!</h1>'
+    print(get_text('Joe'))           # prints '<h1>Hello, Joe!</h1>'
 
     """Memoisation is a useful application of decorators. We first define a 
     memoisation function."""
