@@ -1,3 +1,6 @@
+"""Bring old Python into the future!"""
+from __future__ import print_function
+
 
 def args_demo():
 
@@ -106,7 +109,7 @@ def closure_demo():
     def get_text(name):
         return 'Hello, %s!' % name
 
-    print(get_text('Joe'))           # prints '<h1>Hello, Joe!</h1>'
+    print(get_text('Joe'))           # prints '<h1><h1>Hello, Joe!</h1></h1>'
 
     """Memoisation is a useful application of decorators. We first define a 
     memoisation function."""
@@ -129,6 +132,38 @@ def closure_demo():
 
     # fast execution--extremely slow without memoisation
     assert fibonnaci(100) == 354224848179261915075
+
+    """Notable design patterns are achieved with closures on built-in Python
+    functions"""
+    class Class:
+
+        def instance_method(self):
+            print(
+                """I'm an instance method, I have access to the object 
+                instance. I am the default choice within a class. Python
+                automatically assigns my first variable to point to the 
+                instance. Note that self is NOT a fixed keyword. It is used by 
+                convention, however you can use any valid identifier."""
+                )
+
+        @classmethod
+        def class_method(cls):
+            print(
+                """I'm a class method. Python makes my leading variable a 
+                reference to the class itself (also an object). I can be called 
+                by an instance or the class directly. I might be used
+                as a *factory function* to make instances with special 
+                initialisations that are best embedded in the class itself."""
+                )
+
+        @staticmethod
+        def static_method():
+            print(
+                """I'm a static method. I *explicity* have access to neither 
+                the instance nor the class. I can be used for utility functions
+                that may usefully be kept in the class's namespace. I solemnly
+                swear not to modify the class or instance state!"""
+                )
 
 
 if __name__ == '__main__':
